@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-11"><h1 class="mb-3">Items List</h1></div>
+    <div class="col-md-1"><button type="button"class="btn btn-success"><a class="nav-link" aria-current="page" routerLink="/items/add">Add</a></button>
+    </div>
+  </div>
+  <table class="table" *ngIf="items && items.length > 0">
+<thead>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Quantity</th>
+    <th>Category</th>
+    <th>Added Date</th>
+    <th>Action</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let it of items">  
+    <td>{{it.id}}</td>
+    <td>{{it.name}}</td>
+    <td>{{it.amount}}</td>
+    <td>{{it.quantity}}</td>
+    <td>{{it.category}}</td>
+    <td>{{it.addedOn}}</td>
+    <td ><a [routerLink]="['/items','edit',it.id]"><button class="btn btn-primary">Edit</button></a></td>
+    <td ><button type="button"class="btn btn-danger" (click)="deleteItem(it.id)">Delete</button></td>
+   
+
+  </tr>
+</tbody>
+</table>
+<p *ngIf="!items || items.length <= 0">No Items Found</p>
+</div>
